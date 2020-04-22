@@ -16,7 +16,7 @@ node {
 	stage('Test') {
 		sh 'npm test'
 	}
-	/**stage('Building image') {
+	stage('Building image') {
         docker.withRegistry( 'https://' + registry, registryCredential ) {
 		    def buildName = registry + ":$BUILD_NUMBER"
 			newApp = docker.build buildName
@@ -31,6 +31,6 @@ node {
     stage('Removing image') {
         sh "docker rmi $registry:$BUILD_NUMBER"
         sh "docker rmi $registry:latest"
-    }**/
+    }
     
 }
